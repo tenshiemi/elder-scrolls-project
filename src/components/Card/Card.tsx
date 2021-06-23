@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Image, ImageContainer, Text, TextContainer } from './Card.styles';
+import { Container, Image, ImageContainer, Text, TextContainer, Title } from './Card.styles';
 
 export interface CardData {
   imageUrl: string;
@@ -22,10 +22,10 @@ function Card({ item }: CardProps) {
         <Image src={item.imageUrl} />
       </ImageContainer>
       <TextContainer>
-        <Text>Name: {item.name}</Text>
-        <Text>Text: {item.text}</Text>
-        <Text>Set Name: {item.set.name}</Text>
-        <Text>Type: {item.type}</Text>
+        <Text><Title>Name:</Title>{item.name}</Text>
+        <Text><Title>Text:</Title>{item.text}</Text>
+        <Text><Title>Set Name:</Title>{item.set.name}</Text>
+        <Text><Title>Type:</Title>{item.type}</Text>
       </TextContainer>
     </Container>
   );

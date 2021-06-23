@@ -4,21 +4,22 @@ import Card, { CardData } from '../Card/Card';
 import { Container, Loader, LoaderFooter } from './CardGrid.styles';
 
 interface CardGridProps {
+  loading: boolean;
   searchString: string;
+  setLoading: (loading: boolean) => void;
 }
 
 function renderCards(cards: CardData[], searchString: string) {
   const filteredCards =
     searchString.length < 3
       ? cards
-      : cards.filter((cards) => cards.name.includes(searchString));
+      : cards.filter((cards) => cards.name.toLowerCase().includes(searchString));
   return filteredCards.map((card: CardData) => <Card item={card} key={card.name} />);
 }
 
-function CardGrid({ searchString }: CardGridProps) {
+function CardGrid({ loading, searchString, setLoading }: CardGridProps) {
   const [cards, setCards] = useState<CardData[]>([]);
   const [currentIndex, setCurrentIndex] = useState(1);
-  const [loading, setLoading] = useState(true);
 
   const handleScroll = () => {
     if (

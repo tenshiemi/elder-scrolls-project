@@ -8,7 +8,7 @@ function SearchField({ setSearchTerm }: SearchFieldProps) {
   return (
     <InputField
       name="search"
-      onChange={(event) => setSearchTerm(event?.target.value)}
+      onChange={(event) => setSearchTerm(event?.target.value.toLowerCase())}
       placeholder="Enter search term here..."
       type="text"
     />
